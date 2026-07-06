@@ -1,0 +1,55 @@
+# requirements.txt
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+xgboost>=2.0
+tensorflow>=2.13
+joblib>=1.3
+matplotlib>=3.7
+streamlit>=1.28
+plotly>=5.17
+
+# ──────────────────────────────────────────────────────────────
+# README — AI Smart Renewable Energy Management System
+# ──────────────────────────────────────────────────────────────
+#
+# PROJECT STRUCTURE
+# ─────────────────
+# energy_system/
+# ├── data_generator.py      → Synthetic dataset (2 yrs × hourly)
+# ├── models.py              → RF + XGBoost + LSTM models
+# ├── decision_engine.py     → AI action engine (STORE/SELL/USE)
+# ├── train_and_evaluate.py  → Full training pipeline + charts
+# ├── dashboard.py           → Streamlit web dashboard
+# └── requirements.txt
+#
+# QUICKSTART
+# ──────────
+# 1. Install dependencies
+#    pip install -r requirements.txt
+#
+# 2. Train all models (takes ~5–10 min first time)
+#    cd energy_system
+#    python train_and_evaluate.py
+#
+# 3. Launch the interactive dashboard
+#    streamlit run dashboard.py
+#
+# ML MODELS
+# ─────────
+# • Random Forest   → Solar/Wind/Load regression
+# • XGBoost         → Solar/Wind/Load + Action classification
+# • LSTM (24→24)    → 24-hour sequence-to-sequence forecast
+#
+# AI DECISION ENGINE
+# ──────────────────
+# Each hour the engine decides:
+#   STORE  → Charge battery (surplus + SOC < max)
+#   SELL   → Export to grid (large surplus + good price)
+#   USE    → Discharge battery / import (deficit)
+#
+# KEY OUTPUTS (matching project spec)
+# ────────────────────────────────────
+# Tomorrow Solar Output   = ~245 kWh   (LSTM prediction)
+# Battery Charge Needed   = 60 %       (optimiser target)
+# Expected Load           = 210 kWh   (LSTM prediction)
